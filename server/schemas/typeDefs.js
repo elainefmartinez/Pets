@@ -27,20 +27,31 @@ const typeDefs = gql`
   }
 
   input PostInput {
-    
+    _id: ID
+    post_text: String
+    post_title: String
+    comments: [Comment]
   }
 
   input CommentInput {
-    
+    _id: ID
+    comment_text: String
+    comment_user: String
   }
 
   type Query {
-    me:User
+    posts: [Post]
+    user: User
+    post(_id: ID!, comments: [ID]): Post
   }
 
   type Mutation {
-    loginUser (email:String!, password: String!): Auth
-    addUser (username: String!, email: String!, password: String! ): Auth
+    login(email:String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String! ): Auth
+    addPost(post_text: String, post_title: String, comments: [ID]!): Post
+    addComment(comment_text: String, comment_user: String): Comment
+    updatePost(_id: ID!, post_text: String, post_title: String): Post
+    updateComment(_id: ID!, comment_text: String): Comment
   }
 `;
 
