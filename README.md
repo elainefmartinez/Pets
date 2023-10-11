@@ -8,6 +8,8 @@
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Features] (#features)
+- [Technologies](#technologies)
 - [Contributing](#contributing)
 - [License](#license)
 
