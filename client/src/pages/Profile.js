@@ -3,8 +3,8 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 //need to change this to current thing
-//import ThoughtForm from '../components/ThoughtForm';
-//import ThoughtList from '../components/ThoughtList';
+import PostForm from '../components/PostForm';
+import PostList from '../components/PostList';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -45,7 +45,7 @@ const Profile = () => {
 
         <div className="col-12 col-md-10 mb-5">
           {/* switch out for Post data */}
-          <ThoughtList
+          <PostList
             thoughts={user.thoughts}
             title={`${user.username}'s thoughts...`}
             showTitle={false}
@@ -58,7 +58,7 @@ const Profile = () => {
             style={{ border: '1px dotted #1a1a1a' }}
           >
              {/* switch out for Post data */}
-            <ThoughtForm />
+            <PostForm />
           </div>
         )}
       </div>
