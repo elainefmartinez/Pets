@@ -32,6 +32,7 @@ export const ADD_POST = gql`
             comments{
                 _id
                 comment_text
+
             }
         }
     }
