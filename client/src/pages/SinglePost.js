@@ -9,21 +9,21 @@ import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
 
 //need to rename for posts
-import { QUERY_SINGLE_THOUGHT } from '../utils/queries';
+import { QUERY_SINGLE_POST } from '../utils/queries';
 
 const SinglePost = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   //need to rename for posts like postId
-  const { thoughtId } = useParams();
+  const { postId } = useParams();
 
   //need to rename for posts
-  const { loading, data } = useQuery(QUERY_SINGLE_THOUGHT, {
+  const { loading, data } = useQuery(QUERY_SINGLE_POST, {
     // pass URL parameter
-    variables: { thoughtId: thoughtId },
+    variables: { postId: postId },
   });
 
   //need to rename for posts
-  const thought = data?.thought || {};
+  const post = data?.post || {};
 
   if (loading) {
     return <div>Loading...</div>;
@@ -32,10 +32,10 @@ const SinglePost = () => {
     <div className="my-3">
       <h3 className="card-header bg-dark text-light p-2 m-0">
         {/* //need to rename for posts */}
-        {thought.thoughtAuthor} <br />
+        {post.postAuthor} <br />
         <span style={{ fontSize: '1rem' }}>
            {/* //need to rename for posts */}
-          had this thought on {thought.createdAt}
+          made this post on {post.createdAt}
         </span>
       </h3>
       <div className="bg-light py-4">
@@ -49,17 +49,17 @@ const SinglePost = () => {
           }}
         >
            {/* //need to rename for posts and extension */}
-          {thought.thoughtText}
+          {post.postText}
         </blockquote>
       </div>
 
       <div className="my-5">
          {/* //need to rename for post and comments */}
-        <CommentList comments={thought.comments} />
+        <CommentList comments={post.comments} />
       </div>
       <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
          {/* //need to rename for posts */}
-        <CommentForm thoughtId={thought._id} />
+        <CommentForm postId={post._id} />
       </div>
     </div>
   );
