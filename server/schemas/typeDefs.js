@@ -5,6 +5,7 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     email: String
+    password: String
     posts_made: [Post]
   }
 
@@ -12,6 +13,7 @@ const typeDefs = gql`
     _id: ID!
     post_text: String
     post_title: String
+    post_author: String
     comments: [Comment]
   }
 
@@ -30,6 +32,7 @@ const typeDefs = gql`
     _id: ID
     post_text: String
     post_title: String
+    post_author: String
   }
 
   input CommentInput {

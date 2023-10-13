@@ -14,6 +14,10 @@ const postSchema = new Schema(
       required: true
     },
     comments: [commentSchema],
+    post_author: {
+      type: String,
+      required: true
+    }
   }
 );
 
