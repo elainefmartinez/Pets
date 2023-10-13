@@ -7,7 +7,7 @@ const PostList = ({
     showTitle = true,
     showUsername = true,
   }) => {
-    if (!posts.length) {
+    if (posts?.length === 0 ) {
       return <h3>No Posts Yet</h3>;
     }
   
