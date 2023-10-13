@@ -30,7 +30,6 @@ const typeDefs = gql`
     _id: ID
     post_text: String
     post_title: String
-    comments: [Comment]
   }
 
   input CommentInput {
@@ -48,7 +47,7 @@ const typeDefs = gql`
   type Mutation {
     login(email:String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String! ): Auth
-    addPost(post_text: String, post_title: String, comments: [ID]!): Post
+    addPost(post: PostInput): Post
     addComment(comment_text: String, comment_user: String): Comment
     updatePost(_id: ID!, post_text: String, post_title: String): Post
     updateComment(_id: ID!, comment_text: String): Comment
