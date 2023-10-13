@@ -8,6 +8,8 @@ const resolvers = {
         posts: async () => {
             return await Post.find();
         },
+
+        //delete or update to findUserbyId context.user is undifined
         user: async (parent, args, context) => {
             if (context.user) {
                 const user = await User.findById(context.user._id).populate({
@@ -23,10 +25,10 @@ const resolvers = {
         post: async (parent, { _id }) => {
             return await Post.findById(_id);
         },
-
+        ///come back to query later to fix user context
         me: async (parent, args, context) => {
             if (context.user) {
-              return User.findOne({ _id: context.user._id }).populate('thoughts');
+              return User.findOne({ _id: context.user._id }).populate('posts');
             }
             throw new AuthenticationError('You need to be logged in!');
           },
