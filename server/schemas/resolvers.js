@@ -22,7 +22,14 @@ const resolvers = {
         },
         post: async (parent, { _id }) => {
             return await Post.findById(_id);
-        }
+        },
+
+        me: async (parent, args, context) => {
+            if (context.user) {
+              return User.findOne({ _id: context.user._id }).populate('thoughts');
+            }
+            throw new AuthenticationError('You need to be logged in!');
+          },
     },
     Mutation: {
         addUser: async (parent, args) => {
