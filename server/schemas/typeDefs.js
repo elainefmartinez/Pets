@@ -11,8 +11,8 @@ const typeDefs = gql`
 
   type Post {
     _id: ID!
-    post_text: String
     post_title: String
+    post_text: String
     post_author: String
     comments: [Comment]
   }
@@ -30,8 +30,8 @@ const typeDefs = gql`
 
   input PostInput {
     _id: ID
-    post_text: String
     post_title: String
+    post_text: String
     post_author: String
   }
 
@@ -53,7 +53,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String! ): Auth
     addPost(post: PostInput): Post
     addComment(comment_text: String, comment_user: String): Comment
-    updatePost(_id: ID!, post_text: String, post_title: String): Post
+    updatePost(_id: ID!, post_title: String, post_text: String): Post
     updateComment(_id: ID!, comment_text: String): Comment
   }
 `;

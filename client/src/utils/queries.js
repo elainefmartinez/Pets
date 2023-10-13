@@ -6,8 +6,11 @@ export const QUERY_USER =gql`
             _id
             username
             email
-            posts {
+            # in typedefs Sam calls it posts_made
+            posts_made {
                 _id
+                post_title
+                post_text
             }
         }
     }
@@ -15,10 +18,12 @@ export const QUERY_USER =gql`
 
 export const QUERY_POSTS = gql `
     query getPosts {
-        posts {
+        # in typedefs Sam calls it posts_made
+        posts_made {
             _id
-            post_text
             post_title
+            post_text
+            post_author
         }
     }
 `;
@@ -27,7 +32,9 @@ export const QUERY_SINGLE_POST = gql`
     query getSinglePost ($postId: ID!) {
         post(postId: $postId) {
             _id
+            post_title
             post_text
+            post_author
             comments {
                 comment_text
                 comment_user
@@ -42,6 +49,13 @@ export const QUERY_ME = gql`
             _id
             username
             email
+            # in typedefs Sam calls it posts_made
+            posts_made {
+            _id
+            post_title
+            post_text
+            post_author
+        }
         }
     }
     `;
