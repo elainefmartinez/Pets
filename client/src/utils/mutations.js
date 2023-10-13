@@ -81,7 +81,7 @@ export const UPDATE_COMMENT = gql`
             }
     }
 }
-`;
+ `;
 
 // export const DELETE_COMMENT = gql`
 //     mutation deleteComment($commentId: ID!, $commentText: String!) {
@@ -95,4 +95,4 @@ export const UPDATE_COMMENT = gql`
 //             }
 //         }
 //     }
-// 
+

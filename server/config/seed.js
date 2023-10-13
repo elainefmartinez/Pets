@@ -11,7 +11,10 @@ db.once('open', async () => {
             comments: [{
                 comment_text: 'me too!',
                 comment_user: 'artorrias'
-            }]
+            }],
+
+            post_author:'hello'
+
         },
         { 
             post_text: 'I love cats!', 
@@ -23,7 +26,10 @@ db.once('open', async () => {
             {
                 comment_text: 'i actually hate cats.',
                 comment_user: 'elainefmartinez'
-            }]
+            }],
+
+            post_author:'hello'
+
         },
         { 
             post_text: 'I love birds!', 
@@ -35,12 +41,17 @@ db.once('open', async () => {
             {
                 comment_text: 'birds are great!',
                 comment_user: 'artorrias' 
-            }] 
+            }], 
+
+            post_author:'hello'
         },
         { 
             post_text: 'I love reptiles!', 
             post_title: 'Reptile thoughts', 
-            comments: [] 
+            comments: [],
+            
+            post_author:'hello'
+
         }
     ]);
 
