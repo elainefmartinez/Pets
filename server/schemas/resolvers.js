@@ -26,9 +26,11 @@ const resolvers = {
             return await Post.findById(_id);
         },
         ///come back to query later to fix user context
+       
         me: async (parent, args, context) => {
+            console.log("hello")
             if (context.user) {
-              return User.findOne({ _id: context.user._id }).populate('posts');
+              return User.findOne({ _id: context.user._id });
             }
             throw new AuthenticationError('You need to be logged in!');
           },
