@@ -7,6 +7,8 @@ mutation login ($email: String!, $password: String!) {
         user {
             _id
             username
+            email
+            password
             }
         }
     }
@@ -19,27 +21,31 @@ export const ADD_USER = gql`
             user {
                 _id
                 username
+                email
+                password
             }
         }
     }
 `;
 
 export const ADD_POST = gql`
-    mutation addPost($post_text: String!) {
-        addPost( post_text: $post_text) {
+    mutation addPost($post: PostInput) {
+        addPost(post:$post) {
             _id
-            post_text
             comments{
                 _id
                 comment_text
-
+                comment_user
             }
+            post_author
+            post_text
+            post_title
         }
     }
 `;
 
 export const UPDATE_POST = gql`
-    mutation updatePost($post_text: String!) {
+    mutation updatePost($id: ID!, $post_text: String, $post_title: String) {
         updatePost( post_text: $post_text) {
             _id
             post_text

@@ -1,12 +1,12 @@
 import {gql} from'@apollo/client';
 
 export const QUERY_USER =gql`
-    query user($username:String!) {
-        user(username: $username) {
+    query user {
+        user {
             _id
             username
             email
-            posts {
+            posts_made {
                 _id
             }
         }
@@ -14,37 +14,54 @@ export const QUERY_USER =gql`
 `;
 
 export const QUERY_POSTS = gql `
-    query getPosts {
-        posts {
-            _id
-            post_text
-            post_title
-        }
+   query posts  {
+  posts {
+    _id
+    comments {
+      _id
+      comment_text
+      comment_user
     }
+    post_author
+    post_text
+    post_title
+  }
+}
 `;
 
 export const QUERY_SINGLE_POST = gql`
-    query getSinglePost ($postId: ID!) {
-        post(postId: $postId) {
-            _id
-            post_text
-            comments {
-                comment_text
-                comment_user
-            }
-        }
+   query getSinglePost($id: ID!) {
+  post(_id: $id) {
+    _id
+    comments {
+      _id
+      comment_text
+      comment_user
     }
+    post_author
+    post_text
+    post_title
+  }
+}
 `;
 
 export const QUERY_ME = gql`
     query me {
-        me {
-            _id
-            username
-            email
-        }
+    me {
+      email
+      _id
+      posts_made {
+        _id
+        post_author
+        post_text
+        post_title
+      }
     }
-    `;
+}
+`;
+
+
+
 
 
 
