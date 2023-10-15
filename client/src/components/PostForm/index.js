@@ -8,8 +8,9 @@ import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 const PostForm = () => {
-    const [postText, setPostText] = useState('');
-  
+    const [post_text, setPostText] = useState('');
+    const [post_title, setPostTitle] = useState('');
+
     const [characterCount, setCharacterCount] = useState(0);
   
     const [addPost, { error }] = useMutation(ADD_POST, {
@@ -40,11 +41,12 @@ const PostForm = () => {
       try {
         const { data } = await addPost({
           variables: {
-            postText,
-            postAuthor: Auth.getProfile().data.username,
+            post_title,
+            post_text,
+            post_author: Auth.getProfile().data.username,
           },
         });
-  
+        setPostTitle('');
         setPostText('');
       } catch (err) {
         console.error(err);
@@ -54,8 +56,13 @@ const PostForm = () => {
     const handleChange = (event) => {
       const { name, value } = event.target;
   
-      if (name === 'postText' && value.length <= 280) {
+      if (name === 'post_text' && value.length <= 280) {
         setPostText(value);
+        setCharacterCount(value.length);
+      }
+      //may need to check this if handlechange can't run twice in same form submit
+      if (name === 'post_title' && value.length <= 280) {
+        setPostTitle(value);
         setCharacterCount(value.length);
       }
     };
@@ -77,11 +84,22 @@ const PostForm = () => {
               className="flex-row justify-center justify-space-between-md align-center"
               onSubmit={handleFormSubmit}
             >
+               <div className="col-12 col-lg-9">
+                <textarea
+                  name="post_title"
+                  placeholder="Post Title"
+                  value={post_title}
+                  className="form-input w-100"
+                  style={{ lineHeight: '1.5', resize: 'vertical' }}
+                  onChange={handleChange}
+                ></textarea>
+              </div>
+
               <div className="col-12 col-lg-9">
                 <textarea
-                  name="thoughtText"
-                  placeholder="Here's a new thought..."
-                  value={postText}
+                  name="post_text"
+                  placeholder="Post Text"
+                  value={post_text}
                   className="form-input w-100"
                   style={{ lineHeight: '1.5', resize: 'vertical' }}
                   onChange={handleChange}
