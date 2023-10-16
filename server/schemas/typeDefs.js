@@ -41,11 +41,19 @@ const typeDefs = gql`
     comment_user: String
   }
 
+  # type Query {
+  #   posts: [Post]
+  #   user: User
+  #   # post(_id: ID!, comments: [ID]): Post
+  #   post(_id:ID!):Post
+  #   me: User
+  # }
+
   type Query {
-    posts: [Post]
-    user: User
-    # post(_id: ID!, comments: [ID]): Post
-    post(_id:ID!):Post
+    users: [User]
+    user(username: String!): User
+    posts_made(username: String): [Post]
+    post(postId: ID!): Post
     me: User
   }
 
@@ -53,9 +61,14 @@ const typeDefs = gql`
     login(email:String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String! ): Auth
     addPost(post: PostInput): Post
-    addComment(comment_text: String, comment_user: String): Comment
+    #changed this
+    #addComment(comment_text: String, comment_user: String): Comment
+    addComment(postId: ID!, commentText: String!): Post
     updatePost(_id: ID!, post_text: String, post_title: String): Post
     updateComment(_id: ID!, comment_text: String): Comment
+    #added these two lines below
+    removePost(postId: ID!): Post
+    removeComment(thoughtId: ID!, commentId: ID!): Post
   }
 `;
 
