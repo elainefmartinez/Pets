@@ -6,12 +6,12 @@ import PostList from '../components/PostList';
 import PostForm from '../components/PostForm';
 
 //need to rename based on queries thoughts
-import { QUERY_THOUGHTS } from '../utils/queries';
+import { QUERY_POSTS } from '../utils/queries';
 
 const Home = () => {
 //need to rename based on queries thoughts
-const { loading, data } = useQuery(QUERY_THOUGHTS);
-const thoughts = data?.thoughts || [];
+const { loading, data } = useQuery(QUERY_POSTS);
+const posts = data?.posts || [];
 
   return (
     <main>
@@ -29,7 +29,7 @@ const thoughts = data?.thoughts || [];
           ) : (
             // Post List
             <PostList
-              thoughts={thoughts}
+              posts={posts}
               title="Some Feed for Thought(s)..."
             />
           )}

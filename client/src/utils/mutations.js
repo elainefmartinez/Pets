@@ -7,6 +7,8 @@ mutation login ($email: String!, $password: String!) {
         user {
             _id
             username
+            email
+            password
             }
         }
     }
@@ -19,33 +21,38 @@ export const ADD_USER = gql`
             user {
                 _id
                 username
+                email
+                password
             }
         }
     }
 `;
 
 export const ADD_POST = gql`
-    mutation addPost($post_text: String!) {
-        addPost( post_text: $post_text) {
+    mutation addPost($post: PostInput) {
+        addPost(post:$post) {
             _id
-            post_text
             comments{
                 _id
-                comment_text
-
+                commentText
+                commentUser
             }
+            postAuthor
+            postText
+            postTitle
+            
         }
     }
 `;
 
 export const UPDATE_POST = gql`
-    mutation updatePost($post_text: String!) {
-        updatePost( post_text: $post_text) {
+    mutation updatePost($id: ID!, $postText: String, $postTitle: String) {
+        updatePost( postText: $postText) {
             _id
-            post_text
+            postText
             comments{
                 _id
-                comment_text
+                commentText
             }
         }
     }
@@ -53,15 +60,15 @@ export const UPDATE_POST = gql`
 
 
 export const ADD_COMMENT = gql`
-  mutation addComment($postId: ID!, $comment_text: String!) {
+  mutation addComment($postId: ID!, $commentText: String!) {
     addComment(postId: $postId, commentText: $commentText) {
       _id
-      post_title
-      post_text
+      postTitle
+      postText
       comments {
         _id
-        comment_text
-        comment_user
+        commentText
+        commentUser
       }
     }
   }
@@ -69,30 +76,30 @@ export const ADD_COMMENT = gql`
 
 
 export const UPDATE_COMMENT = gql`
-    mutation updateComment ($postId: ID!, comment_text:String!) {
+    mutation updateComment ($postId: ID!, $commentText:String!) {
         updateComment(postId: $postId, commentText: $commentText) {
             _id
-            post_title
-            post_text
+            postTitle
+            postText
             comments{
                 _id
-                comment_text
-                comment_user
+                commentText
+                commentUser
             }
     }
 }
-`;
+ `;
 
 // export const DELETE_COMMENT = gql`
 //     mutation deleteComment($commentId: ID!, $commentText: String!) {
 //         deleteComment(postId: $postId, commentText: $commentText) {
 //             _id
-//             post_text
+//             postText
 //             comments {
 //                 _id
-//                 comment_text
-//                 comment_user
+//                 commentText
+//                 commentUser
 //             }
 //         }
 //     }
-// 
+
