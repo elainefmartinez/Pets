@@ -8,6 +8,8 @@ export const QUERY_USER =gql`
             email
             posts_made {
                 _id
+                post_title
+                post_text
             }
         }
     }
