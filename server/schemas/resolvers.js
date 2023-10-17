@@ -15,7 +15,7 @@ const resolvers = {
 
         //change I made
         //so I had to rename this to match typedefs so it doesn't shoot undefined
-        posts_made: async (parent, { username }) => {
+        postsMade: async (parent, { username }) => {
             const params = username ? { username } : {};
             return Post.find(params);
           },
@@ -35,11 +35,11 @@ const resolvers = {
         // },
         //new code I added to test
         user: async (parent, { username }) => {
-            return User.findOne({ username }).populate('posts_made');
+            return User.findOne({ username }).populate('postsMade');
           },
 
         users: async () => {
-            return User.find().populate('posts_made');
+            return User.find().populate('postsMade');
           },
 
         // post: async (parent, { _id }) => {
@@ -48,7 +48,7 @@ const resolvers = {
 
         //new code I added to test
         post: async (parent, { postId }) => {
-            return Thought.findOne({ _id: postId });
+            return Post.findOne({ _id: postId });
           },
         ///come back to query later to fix user context
        
@@ -56,7 +56,10 @@ const resolvers = {
             console.log("hello")
             if (context.user) {
                 //tweaked next line to add a populate
-              return User.findOne({ _id: context.user._id }).populate('posts_made');
+              console.log("Inner")
+                const usr = await User.findOne({ _id: context.user._id }).populate('postsMade');
+                console.log("Got the usr", usr);
+                return usr;
             }
             throw new AuthenticationError('You need to be logged in!');
           },
@@ -83,12 +86,13 @@ const resolvers = {
         //     throw new AuthenticationError('Not logged in');
         // },
         //new code I added
-        addPost: async (parent, { post_title, post_text }, context) => {
+        addPost: async (parent, { post } , context) => {
+            const { postTitle, postText, postAuthor } = post;
             if (context.user) {
               const post = await Post.create({
-                post_title,
-                post_text,
-                post_author: context.user.username,
+                postTitle,
+                postText,
+                postAuthor: context.user.username,
               });
       
               await User.findOneAndUpdate(

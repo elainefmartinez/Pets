@@ -5,16 +5,16 @@ const { Schema } = mongoose;
 
 const postSchema = new Schema(
   {
-    post_title: {
+    postTitle: {
       type: String,
       required: true
     },
-    post_text: {
+    postText: {
       type: String,
       required: true
     },
     comments: [commentSchema],
-    post_author: {
+    postAuthor: {
       type: String,
       required: true
     }
