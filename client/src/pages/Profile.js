@@ -27,7 +27,7 @@ const Profile = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
+  console.log(user)
   if (!user?.username) {
     return (
       <h4>
@@ -47,10 +47,10 @@ const Profile = () => {
         <div className="col-12 col-md-10 mb-5">
           {/* switch out for Post data */}
           <PostList
-            posts={user.posts}
+            posts={user.postsMade}
             title={`${user.username}'s thoughts...`}
-            showTitle={false}
-            showUsername={false}
+            showTitle={true}
+            showUsername={userParam ? true : false}
           />
         </div>
         {!userParam && (
