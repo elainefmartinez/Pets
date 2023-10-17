@@ -32,11 +32,10 @@ const SinglePost = () => {
     <div className="my-3">
       <h3 className="card-header bg-dark text-light p-2 m-0">
         {/* //need to rename for posts */}
-        {post.postAuthor} <br />
-        <span style={{ fontSize: '1rem' }}>
-           {/* //need to rename for posts */}
+        {post.post_author} <br />
+        {/* <span style={{ fontSize: '1rem' }}>
           made this post on {post.createdAt}
-        </span>
+        </span> */}
       </h3>
       <div className="bg-light py-4">
         <blockquote
@@ -49,7 +48,7 @@ const SinglePost = () => {
           }}
         >
            {/* //need to rename for posts and extension */}
-          {post.postText}
+          {post.post_text}
         </blockquote>
       </div>
 

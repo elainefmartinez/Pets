@@ -29,7 +29,7 @@ const posts = data?.posts || [];
           ) : (
             // Post List
             <PostList
-              thoughts={posts}
+              posts={posts}
               title="Some Feed for Thought(s)..."
             />
           )}

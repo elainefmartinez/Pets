@@ -6,25 +6,29 @@ export const QUERY_USER =gql`
             _id
             username
             email
-            posts_made {
+            postsMade {
                 _id
+                postTitle
+                postText
+                
             }
         }
     }
 `;
 
 export const QUERY_POSTS = gql `
-   query posts  {
-  posts {
+   query postsMade  {
+  postsMade {
     _id
     comments {
       _id
-      comment_text
-      comment_user
+      commentText
+      commentUser
     }
-    post_author
-    post_text
-    post_title
+    postAuthor
+    postText
+    postTitle
+   
   }
 }
 `;
@@ -35,12 +39,12 @@ export const QUERY_SINGLE_POST = gql`
     _id
     comments {
       _id
-      comment_text
-      comment_user
+      commentText
+      commentUser
     }
-    post_author
-    post_text
-    post_title
+    postAuthor
+    postText
+    postTitle
   }
 }
 `;
@@ -49,12 +53,13 @@ export const QUERY_ME = gql`
     query me {
     me {
       email
+      username
       _id
-      posts_made {
+      postsMade {
         _id
-        post_author
-        post_text
-        post_title
+        postAuthor
+        postText
+        postTitle
       }
     }
 }
