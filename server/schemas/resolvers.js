@@ -97,7 +97,7 @@ const resolvers = {
       
               await User.findOneAndUpdate(
                 { _id: context.user._id },
-                { $addToSet: { posts: post._id } }
+                { $addToSet: { postsMade: post._id } }
               );
       
               return post;
