@@ -48,7 +48,7 @@ const Profile = () => {
           {/* switch out for Post data */}
           <PostList
             posts={user.postsMade}
-            title={`${user.username}'s thoughts...`}
+            title={`${user.username}'s Posts...`}
             showTitle={true}
             showUsername={userParam ? true : false}
           />
