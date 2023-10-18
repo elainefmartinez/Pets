@@ -42,13 +42,28 @@ const SinglePost = () => {
           className="p-4"
           style={{
             fontSize: '1.5rem',
+            fontStyle: 'bold',
+            border: '2px dotted #1a1a1a',
+            lineHeight: '1',
+          }}
+        >
+           {/* //need to rename for posts and extension */}
+          Post: {post.postTitle}
+        </blockquote>
+      </div>
+
+      <div className="bg-light py-4">
+        <blockquote
+          className="p-4"
+          style={{
+            fontSize: '1.5rem',
             fontStyle: 'italic',
             border: '2px dotted #1a1a1a',
             lineHeight: '1.5',
           }}
         >
            {/* //need to rename for posts and extension */}
-           {post.postTitle}
+          
           {post.postText}
         </blockquote>
       </div>

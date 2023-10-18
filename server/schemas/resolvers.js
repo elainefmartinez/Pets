@@ -128,14 +128,14 @@ const resolvers = {
 
             throw new AuthenticationError('Not logged in');
         },
-        addComment: async (parent, { postId, comment_text }, context) => {
+        addComment: async (parent, { postId, commentText }, context) => {
             console.log(context);
             if (context.user) {
                 return Post.findOneAndUpdate(
                     { _id: postId },
                     {
                         $addToSet: {
-                            comments: { comment_text, comment_user: context.user.username },
+                            comments: { commentText, commentUser: context.user.username },
                         },
                     },
                     {
