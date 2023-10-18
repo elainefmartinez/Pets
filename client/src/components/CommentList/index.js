@@ -9,9 +9,9 @@ const CommentList = ({ comments = [] }) => {
       <>
         <h3
           className="p-5 display-inline-block"
-          style={{ borderBottom: '1px dotted #1a1a1a' }}
+          style={{ borderBottom: '1px dotted #1a1a1a', textAlign:'center' }}
         >
-          Comments
+        Comments
         </h3>
         <div className="flex-row my-4">
           {comments &&
@@ -20,9 +20,6 @@ const CommentList = ({ comments = [] }) => {
                 <div className="p-3 bg-dark text-light">
                   <h5 className="card-header">
                     {comment.commentUser} commented{' '}
-                    <span style={{ fontSize: '0.825rem' }}>
-                      on {comment.createdAt}
-                    </span>
                   </h5>
                   <p className="card-body">{comment.commentText}</p>
                 </div>

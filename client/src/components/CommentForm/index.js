@@ -14,7 +14,6 @@ const CommentForm = ({postId }) => {
   
     const handleFormSubmit = async (event) => {
       event.preventDefault();
-  
       try {
         const { data } = await addComment({
           variables: {
@@ -23,7 +22,7 @@ const CommentForm = ({postId }) => {
             commentUser: Auth.getProfile().data.username,
           },
         });
-  
+        console.log(data);
         setCommentText('');
       } catch (err) {
         console.error(err);
