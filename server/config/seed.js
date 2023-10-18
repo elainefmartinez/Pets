@@ -55,7 +55,22 @@ db.once('open', async () => {
         }
     ]);
 
-    console.log('posts seeded');
+    await User.deleteMany();
+
+    const users = await User.insertMany([
+        {
+            username: 'artorrias',
+            email: 'superemail@email.com',
+            password: 'happytime'
+        },
+        {
+            username: 'username',
+            email: 'email@email.com',
+            password: 'sadtime'
+        }
+    ]);
+
+    console.log('posts and users seeded');
 
     process.exit();
 });
