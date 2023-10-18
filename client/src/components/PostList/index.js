@@ -25,7 +25,10 @@ const PostList = ({
                   >
                     {post.postAuthor} <br />
                     <span style={{ fontSize: '1rem' }}>
-                      made this post on {post.postTitle}
+                      Made this Post:<br />
+                    </span>
+                    <span style={{ fontSize: '1rem' }}>
+                      {post.postTitle}
                     </span>
                   </Link>
                 ) : (

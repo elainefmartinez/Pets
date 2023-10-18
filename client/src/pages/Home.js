@@ -11,8 +11,7 @@ import { QUERY_POSTS } from '../utils/queries';
 const Home = () => {
 //need to rename based on queries thoughts
 const { loading, data } = useQuery(QUERY_POSTS);
-const posts = data?.posts || [];
-
+const posts = data?.postsMade || [];
   return (
     <main>
       <div className="flex-row justify-center">

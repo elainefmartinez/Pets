@@ -36,9 +36,7 @@ const PostForm = () => {
   
     const handleFormSubmit = async (event) => {
       event.preventDefault();
-        console.log(postTitle, postText)
       try {
-        console.log("Trying to submit with title and text", postTitle, postText);
         const { data } = await addPost({
           variables: {
             post: {
