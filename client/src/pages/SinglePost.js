@@ -15,13 +15,13 @@ const SinglePost = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   //need to rename for posts like postId
   const { postId } = useParams();
-
+  console.log(postId);
   //need to rename for posts
   const { loading, data } = useQuery(QUERY_SINGLE_POST, {
     // pass URL parameter
     variables: { postId: postId },
   });
-
+  console.log(data);
   //need to rename for posts
   const post = data?.post || {};
 
@@ -32,7 +32,7 @@ const SinglePost = () => {
     <div className="my-3">
       <h3 className="card-header bg-dark text-light p-2 m-0">
         {/* //need to rename for posts */}
-        {post.post_author} <br />
+        {post.postAuthor} <br />
         {/* <span style={{ fontSize: '1rem' }}>
           made this post on {post.createdAt}
         </span> */}
@@ -48,7 +48,8 @@ const SinglePost = () => {
           }}
         >
            {/* //need to rename for posts and extension */}
-          {post.post_text}
+           {post.postTitle}
+          {post.postText}
         </blockquote>
       </div>
 
