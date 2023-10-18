@@ -29,7 +29,7 @@ const posts = data?.postsMade || [];
             // Post List
             <PostList
               posts={posts}
-              title="Some Feed for Thought(s)..."
+              title="Some Love for Pet(s)..."
             />
           )}
         </div>
