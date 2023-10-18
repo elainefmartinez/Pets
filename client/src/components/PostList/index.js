@@ -17,7 +17,7 @@ const PostList = ({
         {posts &&
           posts.map((post) => (
             <div key={post._id} className="card mb-3">
-              <h4 className="card-header bg-primary text-light p-2 m-0">
+              <h4 className="card-header bg-success text-light p-2 m-0">
                 {showUsername ? (
                   <Link
                     className="text-light"
@@ -40,10 +40,10 @@ const PostList = ({
                 <p>{post.postText}</p>
               </div>
               <Link
-                className="btn btn-primary btn-block btn-squared"
+                className="btn btn-success btn-block btn-squared"
                 to={`/posts/${post._id}`}
               >
-                Join the discussion on this post.
+                Join this discussion CLICK to comment.
               </Link>
             </div>
           ))}
