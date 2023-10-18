@@ -25,7 +25,7 @@ const Footer = () => {
           >
             ❤️
           </span>{' '}
-          by 4 Koma.
+          by 4-Koma.
         </h4>
       </div>
     </footer>
