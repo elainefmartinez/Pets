@@ -87,20 +87,18 @@ const resolvers = {
         // },
         //new code I added
         addPost: async (parent, { post } , context) => {
-            const { postTitle, postText, postAuthor } = post;
+            const { postTitle, postText } = post;
             if (context.user) {
-              const post = await Post.create({
+              const newPost = await Post.create({
                 postTitle,
                 postText,
                 postAuthor: context.user.username,
               });
-      
               await User.findOneAndUpdate(
                 { _id: context.user._id },
-                { $addToSet: { postsMade: post._id } }
+                { $addToSet: { postsMade: newPost._id } }
               );
-      
-              return post;
+              return newPost;
             }
             throw new AuthenticationError('You need to be logged in!');
           },
