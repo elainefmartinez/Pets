@@ -22,6 +22,9 @@ const CommentForm = ({postId }) => {
             commentUser: Auth.getProfile().data.username,
           },
         });
+        
+        console.log(data);
+        
         setCommentText('');
       } catch (err) {
         console.error(err);
